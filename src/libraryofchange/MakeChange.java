@@ -10,7 +10,7 @@ public class MakeChange {
 
 		System.out.println("Please enter the item's price: ");
 		price = input.nextDouble();
-		//input.checkRightPrice();
+		// input.checkRightPrice();
 		System.out.println("Please enter the amount tendered by customer: ");
 		moneytendered = input.nextDouble();
 		System.out.println("So the amount tendered was ..." + moneytendered);
@@ -20,15 +20,12 @@ public class MakeChange {
 
 	public static boolean isTender(double moneytendered, double price) {
 		boolean result = false;
-		if (moneytendered > price == 0) {
+		if (moneytendered > price) {
 			result = true;
 		} else {
 			result = false;
 		}
 		return result;
 	}
-	
 
-
-}
-   
+}   
