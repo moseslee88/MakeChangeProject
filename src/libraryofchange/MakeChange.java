@@ -91,7 +91,6 @@ public class MakeChange {
 				}
 				Penny = y / .01;
 				if (Penny > 0.0) {
-					Penny = (Math.round(Penny));
 					g = (int)(Math.round(Penny));
 					y = y % .01;
 					System.out.println(g + " " + cList[7]);
