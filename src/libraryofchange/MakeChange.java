@@ -1,5 +1,4 @@
 package libraryofchange;
-
 import java.util.*;
 import java.text.DecimalFormat;
 
@@ -17,19 +16,16 @@ public class MakeChange {
 		System.out.println("So the amount tendered was ..." + moneyparse);
 		checkRightPrice(moneyparse, priceparse, moneytendered, z, y);
 
-		// do {
-		// System.out.println("Select an option: ");
-		// System.out.println("1) List Employees");
-		// } while (moneyparse > priceparse);
+		// considered adding a While loop here, but wasn't too sure
 
 		System.out.print("\nHave a good day. See ya!");
-
 	}
 
-	public static boolean checkRightPrice(double moneyparse, double priceparse, double moneytendered, double z, double y) {
+	public static boolean checkRightPrice(double moneyparse, double priceparse, double moneytendered, double z,
+			double y) {
 		boolean result = false;
-		String cList[] = { "twenty dollar bill", "ten dollar bill", "five dollar bill", 
-				"one dollar bill", "quarters", "dimes", "nickels", "pennies" };
+		String cList[] = { "twenty dollar bill", "ten dollar bill", "five dollar bill", "one dollar bill", "quarters",
+				"dimes", "nickels", "pennies" };
 		Scanner input = new Scanner(System.in);
 		// I insert a input correction loop
 		while (!(moneyparse > priceparse)) {
@@ -50,57 +46,64 @@ public class MakeChange {
 		}
 		if (moneyparse > priceparse) {
 			z = moneyparse;
-			y= (moneyparse - priceparse);
+			y = (moneyparse - priceparse);
 			double Ten, Fiv, Uno, Quarter, Dime, Nickel, Penny;
 			int a, b, c, d, e, f, g;
 			System.out.println("Let's move forward and see how much change you receive in return.");
 			System.out.print("Here is the customer's change, starting ");
-			System.out.println("with the largest bill: "); 
-			while(z > priceparse) {
+			System.out.println("with the largest bill: ");
+			while (z > priceparse) {
 				Ten = (y / 10);
 				if (Ten > 0.0) {
-					a = (int)(Ten);
-				    System.out.println(a + " " + cList[1]);
-			    }
+					a = (int) (Ten);
+					y = y % 10;
+					System.out.println(a + " " + cList[1]);
+				}
 				Fiv = y / 5;
-				if (Ten < 1.0) {
-					b = (int)(Fiv);
+				if (Fiv > 0.0) {
+					b = (int) (Fiv);
+					y = y % 5;
 					System.out.println(b + " " + cList[2]);
 				}
 				Uno = y / 1;
-				if (Fiv < 1.0) {
-					c = (int)(Uno);
+				if (Uno > 0.0) {
+					c = (int) (Uno);
+					y = y % 1;
 					System.out.println(c + " " + cList[3]);
 				}
 				Quarter = y / 0.25;
-				if (Uno < 1.0) {
-					d = (int)(Quarter);
+				if (Quarter > 0.0) {
+					d = (int) (Quarter);
+					y = y % .25;
 					System.out.println(d + " " + cList[4]);
 				}
 				Dime = y / .10;
-				if (Quarter < 1.0) {
-					e = (int)(Dime);
+				if (Dime > 0.0) {
+					e = (int) (Dime);
+					y = y % .10;
 					System.out.println(e + " " + cList[5]);
 				}
 				Nickel = y / .05;
-				if (Dime < 1.0) {
-					f = (int)(Nickel);
+				if (Nickel > 0.0) {
+					f = (int) (Nickel);
+					y = y % .05;
 					System.out.println(f + " " + cList[6]);
 				}
 				Penny = y / .01;
-				if (Nickel < 1.0) {
-					g = (int)(Penny);
+				if (Penny > 0.0) {
+					Penny = (Math.round(Penny));
+					g = (int)(Math.round(Penny));
+					y = y % .01;
 					System.out.println(g + " " + cList[7]);
 				}
-
 				break;
 			}
 
+			System.out.println("\n\n\n\n Here's the array I borrowed from.");
 			System.out.println(Arrays.toString(cList));
 		}
 		input.close();
 		result = true;
 		return result;
-
 	}
 }
