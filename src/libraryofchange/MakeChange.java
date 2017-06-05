@@ -97,7 +97,6 @@ public class MakeChange {
 				}
 				break;
 			}
-
 			System.out.println("\n\n\n\n Here's the array I borrowed from.");
 			System.out.println(Arrays.toString(cList));
 		}
